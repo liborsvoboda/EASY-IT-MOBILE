@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BuddyConnect.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
+    xmlns:local="clr-namespace:BuddyConnect"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="{x:Static language:AppResources.Menu}"
+    FlyoutBackgroundColor="{DynamicResource MenuFlyoutColor}"
+    FlyoutHeaderBehavior="Fixed"
+    Navigated="AfterNavigationChanged"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.PresentationMode="Animated">
+    <!--  FlyoutIcon="{mi:Fluent Icon=AppTitle24}"  -->
+
+
+    <!--  SOLVE ANDROID TOP PADDING  MenuItems  -->
+    <Shell.FlyoutHeader>
+        <Label Padding="10,30,10,10" />
+    </Shell.FlyoutHeader>
+
+
+    <Shell.TitleView>
+        <toolkit:UniformItemsLayout
+            Padding="30,5,10,20"
+            HeightRequest="50" MinimumHeightRequest="50" VerticalOptions="End" WidthRequest="400">
+            <Label
+                x:Name="selectedMenu"
+                Padding="25,20,0,0"
+                FontSize="15" HorizontalOptions="Start"
+                Text="{x:Static language:AppResources.Welcome}"
+                TextColor="White" VerticalOptions="End" WidthRequest="180" />
+
+            <HorizontalStackLayout
+                Padding="0,0,10,0"
+                HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="100">
+                <Button
+                    x:Name="theme"
+                    Margin="5"
+                    BackgroundColor="LightSlateGray" Clicked="OnThemeToolbarItemClicked" HeightRequest="30" HorizontalOptions="End"
+                    ImageSource="{mi:Fluent Icon=DarkTheme24,
+                                            IconSize=20.0}"
+                    VerticalOptions="Center" WidthRequest="40" />
+
+                <ImageButton
+                    x:Name="language"
+                    Margin="0"
+                    BackgroundColor="LightSlateGray" Clicked="SelectLanguageClicked" HeightRequest="29" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="40" />
+
+            </HorizontalStackLayout>
+        </toolkit:UniformItemsLayout>
+
+
+    </Shell.TitleView>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout
+            Background="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" />
+    </Shell.FlyoutFooter>
+    <!--  PAGES ROUTING AutomationId is Translated Title  -->
+    <!--  https://user-images.githubusercontent.com/5375137/165635140-8e10db78-94a6-490c-bc85-dc87dc1e1b7d.png  -->
+
+    <!--<FlyoutItem FlyoutDisplayOptions="AsMultipleItems">-->
+    <!--  MOZNOST NATAHOVAT DO MENU DYNAMICKY WEBOVE STRANKY  -->
+    <!--  KDYZ SE PREDELA TOTO MENU DO PROGRAMATICALLY DEFINITIONS  -->
+    <!--  PRES REGISTER ROUTE  -->
+    <ShellContent
+        x:Name="WelcomePage"
+        Title="{x:Static language:AppResources.AppName}"
+        ContentTemplate="{DataTemplate local:WelcomePage}"
+        Icon="{mi:Fluent Icon=Wallpaper24,
+                         IconSize=30}"
+        Route="WelcomePage" />
+
+    <ShellContent
+        x:Name="DeviceManagementPage"
+        Title="{x:Static language:AppResources.AppName}"
+        ContentTemplate="{DataTemplate local:DeviceManagementPage}"
+        Icon="{mi:Fluent Icon=DataUsage24,
+                         IconSize=30}"
+        Route="DeviceManagementPage" />
+
+
+    <ShellContent
+        x:Name="WebViewPage"
+        Title="{x:Static language:AppResources.WebViewPage}"
+        ContentTemplate="{DataTemplate local:WebViewPage}"
+        Icon="{mi:Fluent Icon=WebAsset24,
+                         IconSize=30}"
+        Route="WebViewPage" />
+
+
+    <ShellContent
+        x:Name="NewsListPage"
+        Title="{x:Static language:AppResources.News}"
+        ContentTemplate="{DataTemplate local:NewsListPage}"
+        Icon="{mi:Fluent Icon=News28,
+                         IconSize=30}"
+        Route="NewsListPage" />
+
+
+    <ShellContent
+        x:Name="SettingListPage"
+        Title="{x:Static language:AppResources.Settings}"
+        ContentTemplate="{DataTemplate local:SettingListPage}"
+        Icon="{mi:Fluent Icon=DataUsageSettings20,
+                         IconSize=30}"
+        Route="SettingListPage" />
+
+
+    <ShellContent
+        x:Name="NoteListPage"
+        Title="{x:Static language:AppResources.Notes}"
+        ContentTemplate="{DataTemplate local:NoteListPage}"
+        Icon="{mi:Material Icon=Notes,
+                           IconSize=30}"
+        Route="NoteListPage" />
+
+
+    <ShellContent
+        x:Name="ContactListPage"
+        Title="{x:Static language:AppResources.Contacts}"
+        ContentTemplate="{DataTemplate local:ContactListPage}"
+        Icon="{mi:Material Icon=Notes,
+                           IconSize=30}"
+        Route="ContactListPage" />
+
+
+    <ShellContent
+        x:Name="AboutListPage"
+        Title="{x:Static language:AppResources.About}"
+        ContentTemplate="{DataTemplate local:AboutListPage}"
+        Icon="{mi:Material Icon=Info,
+                           IconSize=30}"
+        Route="AboutListPage" />
+
+
+</Shell>

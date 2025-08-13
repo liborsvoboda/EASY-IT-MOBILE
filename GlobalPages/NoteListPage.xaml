@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BuddyConnect.NoteListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
+    xmlns:local="clr-namespace:BuddyConnect"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <!--  40- FreeLine is Android Bottom Menu Correction  -->
+    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto,45">
+
+        <ScrollView
+            Grid.Row="0" Grid.Column="0"
+            Padding="10"
+            HorizontalOptions="Fill" VerticalOptions="Start" VerticalScrollBarVisibility="Always">
+            <TableView Intent="Menu">
+                <TableRoot x:Name="noteTable" />
+            </TableView>
+        </ScrollView>
+
+
+        <HorizontalStackLayout
+            Grid.Row="1" Grid.Column="0"
+            HorizontalOptions="Center" VerticalOptions="End">
+            
+            
+            <Button
+                x:Name="btn_AddNote"
+                BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+                Clicked="AddNote_Clicked" FontSize="20" HorizontalOptions="Center"
+                Text="{x:Static language:AppResources.AddNote}"
+                TextColor="{DynamicResource PrimaryButtonTextColor}" />
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

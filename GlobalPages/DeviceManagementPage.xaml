@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BuddyConnect.DeviceManagementPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
+    xmlns:local="clr-namespace:BuddyConnect"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <Grid
+        x:Name="PageContent"
+        Padding="10"
+        ColumnDefinitions="0.4*,0.3*,0.3*" RowDefinitions="Auto,Auto,Auto,*,Auto,40">
+
+        <Label
+            x:Name="lbl_btLabel"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            FontSize="28" HorizontalOptions="Start"
+            Text="{x:Static language:AppResources.BtStatus}"
+            TextColor="{DynamicResource PrimaryTextColor}" />
+
+        <Label
+            x:Name="lbl_status"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            FontSize="32" HorizontalOptions="Start"
+            TextColor="{DynamicResource SecondaryTextColor}" />
+
+        <Button
+            x:Name="bt_scanButton"
+            Grid.Row="1" Grid.Column="2"
+            BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+            Clicked="BtScanButton_Clicked" IsVisible="False"
+            Text="{x:Static language:AppResources.Search}"
+            TextColor="{DynamicResource PrimaryButtonTextColor}" />
+
+        <VerticalStackLayout
+            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+            Margin="0" Padding="0"
+            Background="AntiqueWhite" HorizontalOptions="Fill" IsVisible="True" VerticalOptions="Start">
+
+            <TableView
+                HorizontalOptions="Fill" Intent="Menu" VerticalOptions="CenterAndExpand">
+                <TableRoot x:Name="deviceTable">
+                    <TableSection x:Name="deviceList" Title="{x:Static language:AppResources.AvailableDevices}" />
+                </TableRoot>
+            </TableView>
+        </VerticalStackLayout>
+
+
+        <TableView
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+            Margin="0" Background="LightGreen" 
+            HorizontalOptions="Fill" Intent="Menu" VerticalOptions="Start">
+            <TableRoot x:Name="infoTable">
+                <TableSection x:Name="infoList" Title="{x:Static language:AppResources.InfoReview}" />
+            </TableRoot>
+        </TableView>
+
+        <Button
+            x:Name="bt_infoButton"
+            Grid.Row="4" Grid.Column="0"
+            BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+            Clicked="BtnInfoButton_Clicked" FontSize="10" IsVisible="False"
+            Text="{x:Static language:AppResources.ShowDeviceInfo}"
+            TextColor="{DynamicResource PrimaryButtonTextColor}" />
+
+        <Button
+            x:Name="bt_filesButton"
+            Grid.Row="4" Grid.Column="1"
+            BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+            Clicked="BtnFilesButton_Clicked" FontSize="10" IsVisible="False"
+            Text="{x:Static language:AppResources.ShowListFiles}"
+            TextColor="{DynamicResource PrimaryButtonTextColor}" />
+
+        <Button
+            x:Name="bt_formatButton"
+            Grid.Row="4" Grid.Column="2"
+            BackgroundColor="{DynamicResource ButtonAlertBackgroundColor}"
+            Clicked="BtnFormatButton_Clicked" FontSize="10" IsVisible="False"
+            Text="{x:Static language:AppResources.CleanDevice}"
+            TextColor="{DynamicResource PrimaryButtonTextColor}" />
+
+        <!--  Page Indicator  -->
+        <ActivityIndicator
+            x:Name="aiLoading"
+            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+            HeightRequest="100" HorizontalOptions="Center" IsRunning="False" VerticalOptions="Center" WidthRequest="100" />
+    </Grid>
+</ContentPage>
